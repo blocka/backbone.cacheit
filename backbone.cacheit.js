@@ -33,7 +33,11 @@ _.each(["Model", "Collection"], function(ctor) {
 
     // Return early.
     if (this._def && !options.reload && !this.reload) {
-      return this._def.promise();
+            this._def.done(_.bind(function(resp) {
+	    this.trigger('sync',this,resp,options);
+	 },this));
+	
+	return this._def.promise();
     }
 
     // If a deferred doesn't exist, create one.  If the clear flag is provided,

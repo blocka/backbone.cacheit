@@ -61,7 +61,7 @@ _.each(["Model", "Collection"], function(ctor) {
     }, this));
 
     // Return the deferred to wait with.
-    return this._def.promise();
+    return _.extend({},this._def.promise(),req);
   };
 
   // Allow the jQuery dependency to be swapped out to use this in other

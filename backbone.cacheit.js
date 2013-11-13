@@ -73,4 +73,4 @@ _.each(["Model", "Collection"], function(ctor) {
 
 });
 
-})(typeof global === "object" ? global : this);
+})(this);

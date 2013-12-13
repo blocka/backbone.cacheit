@@ -35,6 +35,9 @@ _.each(["Model", "Collection"], function(ctor) {
     if (this._def && !options.reload && !this.reload) {
             this._def.done(_.bind(function(resp) {
 	    this.trigger('sync',this,resp,options);
+	    if (options && options.reset && !options.silent) {
+	       this.trigger('reset',this,options);
+	    }
 	 },this));
 	
 	return this._def.promise();
